@@ -22,7 +22,7 @@ body {
     padding: 0.5em;
 }
 
-#info a, a:visited {
+a, a:visited {
     color: black;
 }
 
