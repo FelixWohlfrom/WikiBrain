@@ -21,4 +21,4 @@ jobs:
       - name: Verify build
         run: |
           npm ci
-          npm run build
+          npm run deploy
