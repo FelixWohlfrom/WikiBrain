@@ -1,4 +1,7 @@
 {
+  "name": "wikibrain",
+  "version": "0.0.1",
+  "license": "CC-BY-SA-4.0",
   "scripts": {
     "dev": "vite",
     "deploy": "vite build"
