@@ -1,6 +1,8 @@
 
 # WikiBrain
 
+View on https://felixwohlfrom.github.io/WikiBrain/
+
 A visualisation of [Wikidata](https://www.wikidata.org) edit events. Every time an edit event happens, an according action will be shown on the screen.
 
 It uses the [EventStream Service](https://wikitech.wikimedia.org/wiki/Event_Platform/EventStreams_HTTP_Service) to receive edit events and [three.js](https://threejs.org/) for visualisation.
