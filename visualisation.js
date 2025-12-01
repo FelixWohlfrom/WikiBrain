@@ -40,7 +40,10 @@ export class Visualisation {
     const brain = new THREE.Group();
     const gltfLoader = new GLTFLoader();
     gltfLoader.load('./img/brain.gltf',
-      (gltf) => { brain.add(gltf.scene) },
+      (gltf) => {
+        document.getElementById('brainLoader').remove();
+        brain.add(gltf.scene)
+      },
       (progress) => { console.log('Loading brain:', (progress.loaded / progress.total) * 100 + '%') },
       (error) => { console.error('Error loading brain:', error) }
     );
@@ -49,7 +52,10 @@ export class Visualisation {
     // load logo
     const wikiLogo = new THREE.Group();
     gltfLoader.load('./img/wikipediaGlobe.gltf',
-      (gltf) => { wikiLogo.add(gltf.scene) },
+      (gltf) => {
+        document.getElementById('wikiLogoLoader').remove();
+        wikiLogo.add(gltf.scene)
+      },
       (progress) => { console.log('Loading logo:', (progress.loaded / progress.total) * 100 + '%') },
       (error) => { console.error('Error loading logo:', error) }
     )

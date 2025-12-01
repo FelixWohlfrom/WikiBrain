@@ -34,3 +34,7 @@ This page uses resources from 3rd party. These resources are licensed under the 
 ## Light bulb
 
 Videoplasty.com, [Light Bulb or Idea Flat Icon Vector](https://commons.wikimedia.org/wiki/File:Light_Bulb_or_Idea_Flat_Icon_Vector.svg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode)
+
+## Loading spinner
+
+CC0, by https://loading.io/css/

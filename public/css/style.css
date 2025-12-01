@@ -33,3 +33,15 @@ a, a:visited {
 #info h2 {
     font-size: 14px;
 }
+
+#brainLoader {
+    position: absolute;
+    left: 49%;
+    top: 50%;
+}
+
+#wikiLogoLoader {
+    position: absolute;
+    left: 49%;
+    top: 20%;
+}
