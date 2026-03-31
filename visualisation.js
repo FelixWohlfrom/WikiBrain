@@ -53,7 +53,7 @@ export class Visualisation {
       (progress) => { console.log('Loading brain:', (progress.loaded / progress.total) * 100 + '%') },
       (error) => { console.error('Error loading brain:', error) }
     );
-    if (settings.get('brain') === 'true') {
+    if (settings.get('brain') !== 'false') {
       scene.add(brain);
     }
 
@@ -67,13 +67,13 @@ export class Visualisation {
       (progress) => { console.log('Loading logo:', (progress.loaded / progress.total) * 100 + '%') },
       (error) => { console.error('Error loading logo:', error) }
     )
-    if (settings.get('brain') === 'true') {
+    if (settings.get('brain') !== 'false') {
       wikiLogo.translateY(100);
       wikiLogo.scale.addScalar(4);
     } else {
       wikiLogo.scale.addScalar(12);
     }
-    if (settings.get('wikiLogo') === 'true') {
+    if (settings.get('wikiLogo') !== 'false') {
       scene.add(wikiLogo);
     }
 
