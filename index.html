@@ -14,14 +14,14 @@
     <div id="settingsLink"><a href="#" onclick="showSettings(); return false;">⚙</a></div>
     <div id="settings">
       <h1>Settings</h1>
-      <p><input type="checkbox" id="showWikiLogo" name="showWikiLogo" onChange="updateSettings(); return false;" />
+      <p><input type="checkbox" id="showWikiLogo" name="showWikiLogo" checked="checked" onChange="updateSettings(); return false;" />
          <label for="showWikiLogo">Show Wikipedia Logo</label></p>
-      <p><input type="checkbox" id="showBrain" name="showBrain" onChange="updateSettings(); return false;" />
+      <p><input type="checkbox" id="showBrain" name="showBrain" checked="checked" onChange="updateSettings(); return false;" />
          <label for="showBrain">Show Brain</label></p>
       <p><label for="background">Background:</label>
         <select id="background" onChange="updateSettings(); return false;">
-          <option value="wikipedia">Wikipedia</option>
           <option value="wikidata">Wikidata</option>
+          <option value="wikipedia">Wikipedia</option>
         </select>
       </p>
     </div>
