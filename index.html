@@ -7,10 +7,24 @@
     <link rel="stylesheet" href="./css/loader.css" />
     <script type="text/javascript" src="./js/ui.js"></script>
   </head>
-  <body>
+  <body onload="loadSettings();">
     <script type="module" src="./main.js"></script>
     <div class="lds-roller" id="brainLoader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     <div class="lds-roller" id="wikiLogoLoader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div id="settingsLink"><a href="#" onclick="showSettings(); return false;">⚙</a></div>
+    <div id="settings">
+      <h1>Settings</h1>
+      <p><input type="checkbox" id="showWikiLogo" name="showWikiLogo" onChange="updateSettings(); return false;" />
+         <label for="showWikiLogo">Show Wikipedia Logo</label></p>
+      <p><input type="checkbox" id="showBrain" name="showBrain" onChange="updateSettings(); return false;" />
+         <label for="showBrain">Show Brain</label></p>
+      <p><label for="background">Background:</label>
+        <select id="background" onChange="updateSettings(); return false;">
+          <option value="wikipedia">Wikipedia</option>
+          <option value="wikidata">Wikidata</option>
+        </select>
+      </p>
+    </div>
     <div id="infoLink"><a href="#" onclick="showInfo(); return false;">Info/Licenses</a></div>
     <div id="info">
       <h1>WikiBrain</h1>
@@ -25,6 +39,7 @@
       <p>This page uses resources from 3rd party. These resources are licensed under the following conditions:</p>
         <h2>Wallpaper</h2>
         <p><a href="https://commons.wikimedia.org/wiki/User:Harleen_Quinzellov%C3%A1">Harleen Quinzellová</a>, <a href="https://commons.wikimedia.org/wiki/File:Wiki,_wiki,_wiki,_wiki_logo.jpg">Wiki, wiki, wiki, wiki logo</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode" rel="license">CC BY-SA 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
+        <p><a href="https://commons.wikimedia.org/wiki/User:Planemad">Planemad</a>, <a href="https://commons.wikimedia.org/wiki/File:Wikidata-logo-en.svg">Wikidata-logo-en</a>, marked as public domain, details on <a href="https://commons.wikimedia.org/wiki/Template:PD-text">Wikimedia Commons</a></p>
         <h2>Brain model</h2>
         <p><a href="http://brainder.org">Anderson Winkler</a>, <a href="https://brainder.org/research/brain-for-blender/">https://brainder.org/brain-for-blender</a>, adapted brain colors, <a href="http://creativecommons.org/licenses/by-sa/3.0/legalcode" rel="license">CC BY-SA 3.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
         <h2>Wikipedia logo model</h2>

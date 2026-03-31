@@ -3,35 +3,52 @@ body {
     font-family: Tahoma, Verdana, sans-serif;
 }
 
-#infoLink {
+#settingsLink, #infoLink {
     position: absolute;
-    right: 1em;
     bottom: 1em;
 }
 
-#info {
+#settings, #info {
     display: none;
     position: absolute;
     overflow: scroll;
-    right: 1em;
     bottom: 3em;
-    height: 50%;
     width: 20%;
     background-color: white;
     border: 0.1em dashed black;
     padding: 0.5em;
 }
 
+#settingsLink, #settings {
+    left: 1em;
+}
+
+#infoLink, #info {
+    right: 1em;
+}
+
+#settings {
+    height: 20%;
+}
+
+#info {
+    height: 50%;
+}
+
 a, a:visited {
     color: black;
 }
 
-#info h1 {
+#info h1, #settings h1 {
     font-size: 16px;
 }
 
 #info h2 {
     font-size: 14px;
+}
+
+label {
+    user-select: none;
 }
 
 #brainLoader {

@@ -7,12 +7,19 @@ let scene;
 let bulb;
 let renderer;
 
+// configurable items
+let settings;
+let brain;
+let wikiLogo;
+
 // a list of light bulbs to be updated
 let bulbs = new Array();
 
 export class Visualisation {
   
   constructor() {
+    settings = new URLSearchParams(globalThis.location.search);
+
     // the scene we want to render into
     scene = new THREE.Scene();
 
@@ -25,8 +32,7 @@ export class Visualisation {
     camera.position.z = 250;
 
     // load the background
-    const texture = new THREE.TextureLoader().load('./img/wallpaper.jpg');
-    scene.background = texture;
+    Visualisation.setBackground(settings);
 
     // let it be light
     const light = new THREE.PointLight(0xffffff, 100000);
@@ -37,7 +43,7 @@ export class Visualisation {
     scene.add(secondLight);
 
     // load brain
-    const brain = new THREE.Group();
+    brain = new THREE.Group();
     const gltfLoader = new GLTFLoader();
     gltfLoader.load('./img/brain.gltf',
       (gltf) => {
@@ -47,10 +53,12 @@ export class Visualisation {
       (progress) => { console.log('Loading brain:', (progress.loaded / progress.total) * 100 + '%') },
       (error) => { console.error('Error loading brain:', error) }
     );
-    scene.add(brain);
+    if (settings.get('brain') === 'true') {
+      scene.add(brain);
+    }
 
     // load logo
-    const wikiLogo = new THREE.Group();
+    wikiLogo = new THREE.Group();
     gltfLoader.load('./img/wikipediaGlobe.gltf',
       (gltf) => {
         document.getElementById('wikiLogoLoader').remove();
@@ -59,9 +67,15 @@ export class Visualisation {
       (progress) => { console.log('Loading logo:', (progress.loaded / progress.total) * 100 + '%') },
       (error) => { console.error('Error loading logo:', error) }
     )
-    wikiLogo.translateY(100);
-    wikiLogo.scale.addScalar(4);
-    scene.add(wikiLogo);
+    if (settings.get('brain') === 'true') {
+      wikiLogo.translateY(100);
+      wikiLogo.scale.addScalar(4);
+    } else {
+      wikiLogo.scale.addScalar(12);
+    }
+    if (settings.get('wikiLogo') === 'true') {
+      scene.add(wikiLogo);
+    }
 
     // Create bulb mesh
     const loader = new THREE.TextureLoader();
@@ -87,6 +101,7 @@ export class Visualisation {
       brain.rotation.y += 0.01;
       wikiLogo.rotation.y += 0.01;
       Visualisation.updateBulbs();
+      Visualisation.updateSettings();
       
       renderer.render(scene, camera);
     }
@@ -144,5 +159,44 @@ export class Visualisation {
       scene.remove(bulbs[toDeleteIdx]);
       bulbs.splice(toDeleteIdx, 1);
     }
+  }
+
+  static setBackground(settings) {
+    let background = 'wikidata';
+    if (settings.get('background') === 'wikipedia') {
+      background = 'wikipedia';
+    }
+
+    scene.background = new THREE.TextureLoader().load(`./img/wallpaper/${background}.jpg`);
+  }
+
+  static updateSettings() {
+    const newSettings = new URLSearchParams(globalThis.location.search);
+
+    if (settings.get('brain') !== newSettings.get('brain')) {
+      if (newSettings.get('brain') === 'true') {
+        scene.add(brain);
+        wikiLogo.translateY(100);
+        wikiLogo.scale.addScalar(-8);
+      } else {
+        scene.remove(brain);
+        wikiLogo.translateY(-100);
+        wikiLogo.scale.addScalar(8);
+      }
+    }
+
+    if (settings.get('wikiLogo') !== newSettings.get('wikiLogo')) {
+      if (newSettings.get('wikiLogo') === 'true') {
+        scene.add(wikiLogo);
+      } else {
+        scene.remove(wikiLogo);
+      }
+    }
+
+    if (settings.get('background') !== newSettings.get('background')) {
+      Visualisation.setBackground(newSettings);
+    }
+
+    settings = newSettings;
   }
 }
