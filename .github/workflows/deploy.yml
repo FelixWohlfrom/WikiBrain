@@ -40,6 +40,12 @@ jobs:
           npm ci
           npm run deploy
           touch dist/.nojekyll
+
+      - name: Replace git SHA placeholder
+        run: |
+          SHA=${GITHUB_SHA::7}
+          sed -i "s/%%GIT_SHA%%/$SHA/g" dist/index.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
